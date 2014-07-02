@@ -1,0 +1,115 @@
+@font-face {
+	font-family: "Flaticon";
+	src: url("flaticon.eot");
+	src: url("flaticon.eot#iefix") format("embedded-opentype"),
+	url("flaticon.woff") format("woff"),
+	url("flaticon.ttf") format("truetype"),
+	url("flaticon.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+	font-family: Flaticon;
+        font-size: 20px;
+font-style: normal;
+margin-left: 20px;
+}.flaticon-151:before {
+	content: "\e000";
+}
+.flaticon-301:before {
+	content: "\e001";
+}
+.flaticon-452:before {
+	content: "\e002";
+}
+.flaticon-alarm1:before {
+	content: "\e003";
+}
+.flaticon-apron1:before {
+	content: "\e004";
+}
+.flaticon-barbecue1:before {
+	content: "\e005";
+}
+.flaticon-big15:before {
+	content: "\e006";
+}
+.flaticon-bowl12:before {
+	content: "\e007";
+}
+.flaticon-chef13:before {
+	content: "\e008";
+}
+.flaticon-cook1:before {
+	content: "\e009";
+}
+.flaticon-cooker1:before {
+	content: "\e00a";
+}
+.flaticon-cooking12:before {
+	content: "\e00b";
+}
+.flaticon-cooking15:before {
+	content: "\e00c";
+}
+.flaticon-cooking16:before {
+	content: "\e00d";
+}
+.flaticon-cooking5:before {
+	content: "\e00e";
+}
+.flaticon-cup38:before {
+	content: "\e00f";
+}
+.flaticon-dessert1:before {
+	content: "\e010";
+}
+.flaticon-heating5:before {
+	content: "\e011";
+}
+.flaticon-hot57:before {
+	content: "\e012";
+}
+.flaticon-increasing7:before {
+	content: "\e013";
+}
+.flaticon-kitchen:before {
+	content: "\e014";
+}
+.flaticon-kitchen56:before {
+	content: "\e015";
+}
+.flaticon-login2:before {
+	content: "\e016";
+}
+.flaticon-meat7:before {
+	content: "\e017";
+}
+.flaticon-pitcher5:before {
+	content: "\e018";
+}
+.flaticon-recipes:before {
+	content: "\e019";
+}
+.flaticon-salty:before {
+	content: "\e01a";
+}
+.flaticon-stopwatch6:before {
+	content: "\e01b";
+}
+.flaticon-sweet8:before {
+	content: "\e01c";
+}
+.flaticon-temperature8:before {
+	content: "\e01d";
+}
+.flaticon-thermostat:before {
+	content: "\e01e";
+}
+.flaticon-washing3:before {
+	content: "\e01f";
+}
+.flaticon-whisk1:before {
+	content: "\e020";
+}
