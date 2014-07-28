@@ -1,3 +1,5 @@
+////////////////////////////
+/// === Set up Images
 s01_top_counter_clock = new Layer ({x:0, y:100, width:1096, height: 42, image:"images/slide_01/s01_top_counter_clock.png"})
 
 s01_base_purple_path = new Layer ({x:40, y:320, z:-1, width:996, height: 6, image:"images/base_slide/base_purple_path.png"})
@@ -18,6 +20,14 @@ s01_base_right_panel_yellow_circle = new Layer ({x:1038, y:430, width:42, height
 s01_base_right_panel_grey_circle = new Layer ({x:1038, y:495, width:42, height: 42, image:"images/base_slide/base_right_panel_grey_circle.png"})
 s01_base_right_panel_red_circle = new Layer ({x:1038, y:560, width:42, height: 42, image:"images/base_slide/base_right_panel_red_circle.png"})
 
+
+
+
+
+
+////////////////
+/// ====  Init Animations
+
 //Counter Clock Animation
 s01_top_counter_clock.animate({
 	properties: {y: s01_top_counter_clock.y - 100},
@@ -30,6 +40,7 @@ s01_top_counter_clock.animate({
 s01_base_purple_path.animate({
 	properties: {y: s01_base_purple_path.y - 100},
 	curve: "spring(300,10,0)",
+	time: 3000,
 })
 
 s01_base_green_path.animate({
@@ -106,3 +117,7 @@ s01_base_right_panel_red_circle.animate({
 	properties: {y: s01_base_right_panel_red_circle.y - 100},
 	curve: "spring(300,20,0)",
 })
+
+
+////////////////
+////////////////
