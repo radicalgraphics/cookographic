@@ -71,23 +71,6 @@ cookographic_mini_logo = new Layer ({x:210, y:top_y-100, width:220, height:130, 
 //clock_green = new Layer ({x:210,y:top_clock_line_y,width:170,height:42, image:"images/slide_01/clock_green.png"})
 
 
-// =========================================
-// BIG RECIPE LAYER ========================
-// =========================================
-recipe_map = new Layer({
-  x: 1030,
-  y: 0,
-  width: 1024,
-  height: 768,
-  image: "images/recipe_map.jpg",
-  superLayer: bgLayer
-});
-
-// searchModal.superLayer = bgLayer;
-
-recipe_map.shadowColor = 'rgba(0,0,0,0.5)';
-recipe_map.shadowBlur = 10;
-// =========================================
 
 // =========================================
 // CHEVRON LAYER ===========================
@@ -378,6 +361,23 @@ bubble_1.opacity = 0;
 
 
 
+// =========================================
+// BIG RECIPE MAP LAYER ====================
+// =========================================
+recipe_map = new Layer({
+  x: 1030,
+  y: 0,
+  width: 1024,
+  height: 768,
+  image: "images/recipe_map.jpg",
+  superLayer: bgLayer
+});
+
+// searchModal.superLayer = bgLayer;
+
+recipe_map.shadowColor = 'rgba(0,0,0,0.5)';
+recipe_map.shadowBlur = 10;
+// =========================================
 
 
 
