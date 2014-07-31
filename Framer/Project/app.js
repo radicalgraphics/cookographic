@@ -8,7 +8,7 @@ var top_y = 100
 var top_clock_line_y = 250
 
 
-var curve1 = "spring(300,20,20)";
+var curve1 = "spring(300,20,10)";
 
 bgLayer = new Layer({
   x: 210,
@@ -79,13 +79,13 @@ cookographic_mini_logo = new Layer ({x:210, y:top_y-100, width:220, height:130, 
 clock_green_back = new Layer({
   width: 100,
   height: 42,
-  x: 210,
+  x: 0,
   y: top_clock_line_y,
   backgroundColor: "#95cb6f",
   borderRadius: "15px"
 });
 
-
+clock_green_back.superLayer = bgLayer
 
 /* A couple shortcut functions */
 
@@ -261,30 +261,43 @@ button1 = new Layer({
 textStyle = {
   "font-size": "16px",
   "text-align": "center",
+  "line-height" : "30px"
 };
 
 button1.html = "Next Step"
 button1.style = textStyle
-// cookographic_logo.opacity = 0
 
 
 
 
 
-////
+////////////////////////////////////
 // Main Loop
-////
+////////////////////////////////////
 
 
-//bubble_1 = new Layer ({x:410,y:400,width:575, height:487, image:"images/slide_01/s01_main_task.png"})
+//Define
+// Red rooster
+
+bubble_2 = new Layer ({x:700,y:285,width:575, height:487, image:"images/slide_02/red_rooster_pinda.png"})
+bubble_2.superLayer = bgLayer;
+
+bubble_2.properties = {
+  scale : 0.1
+};
+
+bubble_2.opacity = 0;
 
 
+// Define 
 //Bubble Yellow ( Put the noodles in the water )
 
 
-var bubble1_pos_y = 235
+var bubble1_pos_y = 85
 
-bubble_1 = new Layer ({x:970,y:bubble1_pos_y,width:575, height:487, image:"images/slide_01/s01_main_task.png"})
+bubble_1 = new Layer ({x:700,y:bubble1_pos_y,width:575, height:487, image:"images/slide_01/s01_main_task.png"})
+
+bubble_1.superLayer = bgLayer;
 
 bubble_1.properties = {
 	scale : 0.1
@@ -297,8 +310,11 @@ bubble_1.opacity = 0;
 
 
 
+
+
 button1.on(Events.TouchStart, function() {
 
+  //Bubble Woek Noodles yellow FadeIn
   bubble_1.fadeIn();
   bubble_1.animate({
     properties: {
@@ -307,36 +323,69 @@ button1.on(Events.TouchStart, function() {
     curve: curve1
   });
 
+  //Yellow Arrow Left movement
+  s01_base_left_panel_yellow_arrow.animate({
+    properties: {
+      x: s01_base_left_panel_yellow_arrow.x + 10,
+      scale: 1.3
+    },
+    curve: curve1
+  });
 
+  //Bubble Pinda red FadeIn
+  Utils.delay(1, function() {
+    bubble_2.fadeIn();
+    bubble_2.animate({
+      properties: {
+        scale: 0.2
+      },
+      curve: curve1
+    });
+  });
 
+  // //Red Arrow Left movement
+  // Utils.delay(1, function() {
+  //   s01_base_left_panel_red_arrow.animate({
+  //     properties: {
+  //       x: s01_base_left_panel_yellow_arrow.x + 10,
+  //       scale: 1.3
+  //     },
+  //     curve: curve1
+  //   });
+  // });
 
+  //Bubble Yellow Animation
   Utils.delay(1, function() {
     return bubble_1.animate({
       properties: {
-        scale: 0.8,
-        x: 500,
+        scale: 1,
+        x: 250,
         y: bubble1_pos_y,
 
 
       },
+      curve: 'cubic-bezier(0.455, 0.03, 0.515, 0.955)',
+      
+    });
+  });
+  
+
+  //Bubble Red Pinda Animation
+  Utils.delay(1.5, function(){
+
+    return bubble_2.animate({
+      properties:{
+        scale: 0.4,
+        x: 500,
+        y: 285
+      },
       curve: 'cubic-bezier(0.455, 0.03, 0.515, 0.955)'
+      
     });
 
   });
 
-  // Utils.delay(1, function(){
-
-  // 	return clock_green.animate({
-  // 		properties:{
-  // 			x: 340 ,
-  			
-  // 		},
-  //     curve: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
-  // 	});
-
-  // });
-
-
+ //Clock GReen Animation
   Utils.delay(1, function(){
 
     return clock_green_back.animate({
