@@ -5,36 +5,47 @@
 
 var top_y = 100
 
+var top_clock_line_y = 250
+
 var curve1 = "spring(300,20,20)";
 
 
-s01_top_counter_clock = new Layer ({x:210, y:top_y + 130, width:1096, height: 42, image:"images/slide_01/s01_top_counter_clock.png"})
+s01_top_counter_clock = new Layer ({x:210, y:top_clock_line_y, width:1096, height: 42, image:"images/slide_01/s01_top_counter_clock.png"})
 
-s01_base_purple_path = new Layer ({x:264, y:320, z:-1, width:996, height: 6, image:"images/base_slide/base_purple_path.png"})
-s01_base_green_path = new Layer ({x:264, y:420, z:-1, width:996, height: 6, image:"images/base_slide/base_green_path.png"})
-s01_base_yellow_path = new Layer ({x:264, y:520, z:-1, width:996, height: 6, image:"images/base_slide/base_yellow_path.png"})
-s01_base_grey_path = new Layer ({x:264, y:620, z:-1, width:996, height: 6, image:"images/base_slide/base_grey_path.png"})
-s01_base_red_path = new Layer ({x:264, y:720, width:996, height: 6, image:"images/base_slide/base_red_path.png"})
+s01_base_purple_path = new Layer ({x:264, y:top_clock_line_y + 125, z:-1, width:996, height: 6, image:"images/base_slide/base_purple_path.png"})
+s01_base_green_path = new Layer ({x:264, y:top_clock_line_y + 225,  width:996, height: 6, image:"images/base_slide/base_green_path.png"})
+s01_base_yellow_path = new Layer ({x:264, y:top_clock_line_y + 325,  width:996, height: 6, image:"images/base_slide/base_yellow_path.png"})
+s01_base_grey_path = new Layer ({x:264, y:top_clock_line_y + 425,  width:996, height: 6, image:"images/base_slide/base_grey_path.png"})
+s01_base_red_path = new Layer ({x:264, y:top_clock_line_y + 525, width:996, height: 6, image:"images/base_slide/base_red_path.png"})
 
-s01_base_left_panel_purple_arrow = new Layer ({x:210, y:300, width:88, height: 45, image:"images/base_slide/base_left_panel_purple_arrow.png"})
-s01_base_left_panel_green_arrow = new Layer ({x:210, y:400, width:88, height: 45, image:"images/base_slide/base_left_panel_green_arrow.png"})
-s01_base_left_panel_yellow_arrow = new Layer ({x:210, y:500, width:88, height: 45, image:"images/base_slide/base_left_panel_yellow_arrow.png"})
-s01_base_left_panel_grey_arrow = new Layer ({x:210, y:600, width:88, height: 45, image:"images/base_slide/base_left_panel_grey_arrow.png"})
-s01_base_left_panel_red_arrow = new Layer ({x:210, y:700, width:88, height: 45, image:"images/base_slide/base_left_panel_red_arrow.png"})
+s01_base_left_panel_purple_arrow = new Layer ({x:210, y:top_clock_line_y + 105, width:88, height: 45, image:"images/base_slide/base_left_panel_purple_arrow.png"})
+s01_base_left_panel_green_arrow = new Layer ({x:210, y:top_clock_line_y + 205, width:88, height: 45, image:"images/base_slide/base_left_panel_green_arrow.png"})
+s01_base_left_panel_yellow_arrow = new Layer ({x:210, y:top_clock_line_y + 305, width:88, height: 45, image:"images/base_slide/base_left_panel_yellow_arrow.png"})
+s01_base_left_panel_grey_arrow = new Layer ({x:210, y:top_clock_line_y + 405, width:88, height: 45, image:"images/base_slide/base_left_panel_grey_arrow.png"})
+s01_base_left_panel_red_arrow = new Layer ({x:210, y:top_clock_line_y + 505, width:88, height: 45, image:"images/base_slide/base_left_panel_red_arrow.png"})
 
-s01_base_right_panel_purple_circle = new Layer ({x:1255, y:300, width:42, height: 42, image:"images/base_slide/base_right_panel_purple_circle.png"})
-s01_base_right_panel_green_circle = new Layer ({x:1255, y:400, width:42, height: 42, image:"images/base_slide/base_right_panel_green_circle.png"})
-s01_base_right_panel_yellow_circle = new Layer ({x:1255, y:500, width:42, height: 42, image:"images/base_slide/base_right_panel_yellow_circle.png"})
-s01_base_right_panel_grey_circle = new Layer ({x:1255, y:600, width:42, height: 42, image:"images/base_slide/base_right_panel_grey_circle.png"})
-s01_base_right_panel_red_circle = new Layer ({x:1255, y:700, width:42, height: 42, image:"images/base_slide/base_right_panel_red_circle.png"})
+s01_base_right_panel_purple_circle = new Layer ({x:1255, y:top_clock_line_y + 105, width:42, height: 42, image:"images/base_slide/base_right_panel_purple_circle.png"})
+s01_base_right_panel_green_circle = new Layer ({x:1255, y:top_clock_line_y + 205, width:42, height: 42, image:"images/base_slide/base_right_panel_green_circle.png"})
+s01_base_right_panel_yellow_circle = new Layer ({x:1255, y:top_clock_line_y + 305, width:42, height: 42, image:"images/base_slide/base_right_panel_yellow_circle.png"})
+s01_base_right_panel_grey_circle = new Layer ({x:1255, y:top_clock_line_y + 405, width:42, height: 42, image:"images/base_slide/base_right_panel_grey_circle.png"})
+s01_base_right_panel_red_circle = new Layer ({x:1255, y:top_clock_line_y + 505, width:42, height: 42, image:"images/base_slide/base_right_panel_red_circle.png"})
 
 
 //cookographic_logo = new Layer ({x:210, y:120, width:666, height:398, image:"images/cookographic-logo.jpg"})
 
 cookographic_mini_logo = new Layer ({x:210, y:top_y-100, width:220, height:130, image:"images/cookographic-logo.jpg"})
 
+//clock_green = new Layer ({x:210,y:top_clock_line_y,width:170,height:42, image:"images/slide_01/clock_green.png"})
 
 
+clock_green_back = new Layer({
+  width: 100,
+  height: 42,
+  x: 210,
+  y: top_clock_line_y,
+  backgroundColor: "#95cb6f",
+  borderRadius: "15px"
+});
 
 
 
@@ -71,6 +82,10 @@ s01_top_counter_clock.animate({
 	curve: "spring(100,30,0)",
 })
 
+clock_green_back.animate({
+  properties: {y: s01_top_counter_clock.y - 100},
+  curve: "spring(100,30,0)",
+})
 
 //Paths Animation
 //===============
@@ -157,6 +172,7 @@ s01_base_right_panel_red_circle.animate({
 
 
 ////////////////
+/// Cookographic title 
 ////////////////
 
 /* Intro slide only draggable horizontally */
@@ -165,6 +181,35 @@ cookographic_mini_logo.draggable.enabled = true;
 
 cookographic_mini_logo.draggable.speedY = 0;
 
+origin_x = cookographic_mini_logo.x;
+origin_y = cookographic_mini_logo.y;
+
+
+/* Add an animation to the end of a drag */
+
+cookographic_mini_logo.on(Events.DragEnd, function(event, layer) {
+
+  /* Snap back to origin */
+  var animation;
+  return animation = layer.animate({
+    properties: {
+      x: origin_x,
+      y: origin_y
+    },
+    curve: "spring",
+    curveOptions: {
+      friction: 20,
+      tension: 400,
+      velocity: 10
+    }
+  });
+});
+
+
+
+////////////////////
+/// Create the Next Step Button
+//////////////////////
 
 button1 = new Layer({
   x: 50,
@@ -188,7 +233,9 @@ button1.style = textStyle
 
 
 
-
+////
+// Main Loop
+////
 
 
 //bubble_1 = new Layer ({x:410,y:400,width:575, height:487, image:"images/slide_01/s01_main_task.png"})
@@ -196,7 +243,10 @@ button1.style = textStyle
 
 //Bubble Yellow ( Put the noodles in the water )
 
-bubble_1 = new Layer ({x:970,y:180,width:575, height:487, image:"images/slide_01/s01_main_task.png"})
+
+var bubble1_pos_y = 235
+
+bubble_1 = new Layer ({x:970,y:bubble1_pos_y,width:575, height:487, image:"images/slide_01/s01_main_task.png"})
 
 bubble_1.properties = {
 	scale : 0.1
@@ -205,7 +255,7 @@ bubble_1.properties = {
 bubble_1.opacity = 0;
 
 
-clock_green = new Layer ({x:210,y:130,width:170,height:42, image:"images/slide_01/clock_green.png"})
+
 
 
 
@@ -227,7 +277,7 @@ button1.on(Events.TouchStart, function() {
       properties: {
         scale: 0.8,
         x: 500,
-        y: 180,
+        y: bubble1_pos_y,
 
 
       },
@@ -236,17 +286,30 @@ button1.on(Events.TouchStart, function() {
 
   });
 
+  // Utils.delay(1, function(){
+
+  // 	return clock_green.animate({
+  // 		properties:{
+  // 			x: 340 ,
+  			
+  // 		},
+  //     curve: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+  // 	});
+
+  // });
+
+
   Utils.delay(1, function(){
 
-  	return clock_green.animate({
-  		properties:{
-  			x: 300 ,
-  			
-  		}
-  	});
+    return clock_green_back.animate({
+      properties:{
+        width: 250 ,
+        
+      },
+      curve: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+    });
 
   });
-
 
 
 });
