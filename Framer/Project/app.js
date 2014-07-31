@@ -7,28 +7,61 @@ var top_y = 100
 
 var top_clock_line_y = 250
 
+
 var curve1 = "spring(300,20,20)";
 
+bgLayer = new Layer({
+  x: 210,
+  y: 150,
+  width: 1024,
+  height: 768,
+  // backgroundColor: '#e9e9e9'
+});
+bgLayer.style = {
+  'background': "black url('images/background.png') repeat scroll top left"
+}
+bgLayer.clip = true;
 
-s01_top_counter_clock = new Layer ({x:210, y:top_clock_line_y, width:1096, height: 42, image:"images/slide_01/s01_top_counter_clock.png"})
 
-s01_base_purple_path = new Layer ({x:264, y:top_clock_line_y + 125, z:-1, width:996, height: 6, image:"images/base_slide/base_purple_path.png"})
-s01_base_green_path = new Layer ({x:264, y:top_clock_line_y + 225,  width:996, height: 6, image:"images/base_slide/base_green_path.png"})
-s01_base_yellow_path = new Layer ({x:264, y:top_clock_line_y + 325,  width:996, height: 6, image:"images/base_slide/base_yellow_path.png"})
-s01_base_grey_path = new Layer ({x:264, y:top_clock_line_y + 425,  width:996, height: 6, image:"images/base_slide/base_grey_path.png"})
-s01_base_red_path = new Layer ({x:264, y:top_clock_line_y + 525, width:996, height: 6, image:"images/base_slide/base_red_path.png"})
+s01_top_counter_clock = new Layer ({x:0, y:100, width:1096, height: 42, image:"images/slide_01/s01_top_counter_clock.png"})
+s01_top_counter_clock.superLayer = bgLayer;
 
-s01_base_left_panel_purple_arrow = new Layer ({x:210, y:top_clock_line_y + 105, width:88, height: 45, image:"images/base_slide/base_left_panel_purple_arrow.png"})
-s01_base_left_panel_green_arrow = new Layer ({x:210, y:top_clock_line_y + 205, width:88, height: 45, image:"images/base_slide/base_left_panel_green_arrow.png"})
-s01_base_left_panel_yellow_arrow = new Layer ({x:210, y:top_clock_line_y + 305, width:88, height: 45, image:"images/base_slide/base_left_panel_yellow_arrow.png"})
-s01_base_left_panel_grey_arrow = new Layer ({x:210, y:top_clock_line_y + 405, width:88, height: 45, image:"images/base_slide/base_left_panel_grey_arrow.png"})
-s01_base_left_panel_red_arrow = new Layer ({x:210, y:top_clock_line_y + 505, width:88, height: 45, image:"images/base_slide/base_left_panel_red_arrow.png"})
+s01_base_purple_path = new Layer ({x:0, y:top_clock_line_y - 25, z:-1, width:996, height: 6, image:"images/base_slide/base_purple_path.png"})
+s01_base_green_path = new Layer ({x:0, y:top_clock_line_y + 75,  width:996, height: 6, image:"images/base_slide/base_green_path.png"})
+s01_base_yellow_path = new Layer ({x:0, y:top_clock_line_y + 175,  width:996, height: 6, image:"images/base_slide/base_yellow_path.png"})
+s01_base_grey_path = new Layer ({x:0, y:top_clock_line_y + 275,  width:996, height: 6, image:"images/base_slide/base_grey_path.png"})
+s01_base_red_path = new Layer ({x:0, y:top_clock_line_y + 375, width:996, height: 6, image:"images/base_slide/base_red_path.png"})
 
-s01_base_right_panel_purple_circle = new Layer ({x:1255, y:top_clock_line_y + 105, width:42, height: 42, image:"images/base_slide/base_right_panel_purple_circle.png"})
-s01_base_right_panel_green_circle = new Layer ({x:1255, y:top_clock_line_y + 205, width:42, height: 42, image:"images/base_slide/base_right_panel_green_circle.png"})
-s01_base_right_panel_yellow_circle = new Layer ({x:1255, y:top_clock_line_y + 305, width:42, height: 42, image:"images/base_slide/base_right_panel_yellow_circle.png"})
-s01_base_right_panel_grey_circle = new Layer ({x:1255, y:top_clock_line_y + 405, width:42, height: 42, image:"images/base_slide/base_right_panel_grey_circle.png"})
-s01_base_right_panel_red_circle = new Layer ({x:1255, y:top_clock_line_y + 505, width:42, height: 42, image:"images/base_slide/base_right_panel_red_circle.png"})
+s01_base_purple_path.superLayer = bgLayer;
+s01_base_green_path.superLayer = bgLayer;
+s01_base_yellow_path.superLayer = bgLayer;
+s01_base_grey_path.superLayer = bgLayer;
+s01_base_red_path.superLayer = bgLayer;
+
+s01_base_left_panel_purple_arrow = new Layer ({x:0, y:top_clock_line_y - 45, width:88, height: 45, image:"images/base_slide/base_left_panel_purple_arrow.png"})
+s01_base_left_panel_green_arrow = new Layer ({x:0, y:top_clock_line_y + 55, width:88, height: 45, image:"images/base_slide/base_left_panel_green_arrow.png"})
+s01_base_left_panel_yellow_arrow = new Layer ({x:0, y:top_clock_line_y + 155, width:88, height: 45, image:"images/base_slide/base_left_panel_yellow_arrow.png"})
+s01_base_left_panel_grey_arrow = new Layer ({x:0, y:top_clock_line_y + 255, width:88, height: 45, image:"images/base_slide/base_left_panel_grey_arrow.png"})
+s01_base_left_panel_red_arrow = new Layer ({x:0, y:top_clock_line_y + 355, width:88, height: 45, image:"images/base_slide/base_left_panel_red_arrow.png"})
+
+s01_base_left_panel_purple_arrow.superLayer = bgLayer;
+s01_base_left_panel_green_arrow.superLayer = bgLayer;
+s01_base_left_panel_yellow_arrow.superLayer = bgLayer;
+s01_base_left_panel_grey_arrow.superLayer = bgLayer;
+s01_base_left_panel_red_arrow.superLayer = bgLayer;
+
+s01_base_right_panel_purple_circle = new Layer ({x:975, y:top_clock_line_y - 45, width:42, height: 42, image:"images/base_slide/base_right_panel_purple_circle.png"})
+s01_base_right_panel_green_circle = new Layer ({x:975, y:top_clock_line_y + 55, width:42, height: 42, image:"images/base_slide/base_right_panel_green_circle.png"})
+s01_base_right_panel_yellow_circle = new Layer ({x:975, y:top_clock_line_y + 155, width:42, height: 42, image:"images/base_slide/base_right_panel_yellow_circle.png"})
+s01_base_right_panel_grey_circle = new Layer ({x:975, y:top_clock_line_y + 255, width:42, height: 42, image:"images/base_slide/base_right_panel_grey_circle.png"})
+s01_base_right_panel_red_circle = new Layer ({x:975, y:top_clock_line_y + 355, width:42, height: 42, image:"images/base_slide/base_right_panel_red_circle.png"})
+
+s01_base_right_panel_purple_circle.superLayer = bgLayer;
+s01_base_right_panel_green_circle.superLayer = bgLayer;
+s01_base_right_panel_yellow_circle.superLayer = bgLayer;
+s01_base_right_panel_grey_circle.superLayer = bgLayer;
+s01_base_right_panel_red_circle.superLayer = bgLayer;
+
 
 
 //cookographic_logo = new Layer ({x:210, y:120, width:666, height:398, image:"images/cookographic-logo.jpg"})
@@ -36,6 +69,11 @@ s01_base_right_panel_red_circle = new Layer ({x:1255, y:top_clock_line_y + 505, 
 cookographic_mini_logo = new Layer ({x:210, y:top_y-100, width:220, height:130, image:"images/cookographic-logo.jpg"})
 
 //clock_green = new Layer ({x:210,y:top_clock_line_y,width:170,height:42, image:"images/slide_01/clock_green.png"})
+
+
+
+
+
 
 
 clock_green_back = new Layer({
