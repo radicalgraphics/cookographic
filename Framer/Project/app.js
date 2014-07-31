@@ -380,125 +380,137 @@ recipe_map.shadowBlur = 10;
 // =========================================
 
 
+changeScene = function(scene) {
+  switch (scene) {
+    case 1:
+
+      //Bubble Woek Noodles yellow FadeIn
+      bubble_1.fadeIn();
+      bubble_1.animate({
+        properties: {
+          scale: 0.2
+        },
+        curve: curve1
+      });
+
+      //Yellow Arrow Left movement
+      s01_base_left_panel_yellow_arrow.animate({
+        properties: {
+          x: s01_base_left_panel_yellow_arrow.x + 10,
+          scale: 1.3
+        },
+        curve: curve1
+      });
+
+      //Bubble Pinda red FadeIn
+      Utils.delay(1, function() {
+        bubble_2.fadeIn();
+        bubble_2.animate({
+          properties: {
+            scale: 0.2
+          },
+          curve: curve1
+        });
+      });
+
+      // //Red Arrow Left movement
+      // Utils.delay(1, function() {
+      //   s01_base_left_panel_red_arrow.animate({
+      //     properties: {
+      //       x: s01_base_left_panel_yellow_arrow.x + 10,
+      //       scale: 1.3
+      //     },
+      //     curve: curve1
+      //   });
+      // });
+
+      //Bubble Yellow Animation
+      Utils.delay(1, function() {
+        return bubble_1.animate({
+          properties: {
+            scale: 1,
+            x: 250,
+            y: bubble1_pos_y,
 
 
+          },
+          curve: 'cubic-bezier(0.455, 0.03, 0.515, 0.955)',
+          
+        });
+      });
+      
+
+      //Bubble Red Pinda Animation
+      Utils.delay(1.5, function(){
+
+        return bubble_2.animate({
+          properties:{
+            scale: 0.4,
+            x: 500,
+            y: 285
+          },
+          curve: 'cubic-bezier(0.455, 0.03, 0.515, 0.955)'
+          
+        });
+
+      });
+
+     //Clock GReen Animation
+     return Utils.delay(1.5, function(){
+
+        return clock_green_back.animate({
+          properties:{
+            width: 250 ,
+            
+          },
+          curve: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+        });
+
+      });
+
+
+
+
+
+    case 2:
+
+      bubble_1.animate({
+        properties:{
+          scale: 0.3,
+          x: -100 , 
+        },
+      });
+
+      //Clock GReen Animation
+     return Utils.delay(0.2, function(){
+
+        return clock_green_back.animate({
+          properties:{
+            width: clock_green_back.width + 100 ,
+            
+          },
+          curve: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+        });
+
+      });
+
+    //case 3:
+
+
+    }
+
+};
+
+
+////MAIN LOOP CONTROLLER
+
+var currentScene = 1
 
 button1.on(Events.TouchStart, function() {
+  changeScene(currentScene);
 
-  //Bubble Woek Noodles yellow FadeIn
-  bubble_1.fadeIn();
-  bubble_1.animate({
-    properties: {
-      scale: 0.2
-    },
-    curve: curve1
-  });
-
-  //Yellow Arrow Left movement
-  s01_base_left_panel_yellow_arrow.animate({
-    properties: {
-      x: s01_base_left_panel_yellow_arrow.x + 10,
-      scale: 1.3
-    },
-    curve: curve1
-  });
-
-  //Bubble Pinda red FadeIn
-  Utils.delay(1, function() {
-    bubble_2.fadeIn();
-    bubble_2.animate({
-      properties: {
-        scale: 0.2
-      },
-      curve: curve1
-    });
-  });
-
-  // //Red Arrow Left movement
-  // Utils.delay(1, function() {
-  //   s01_base_left_panel_red_arrow.animate({
-  //     properties: {
-  //       x: s01_base_left_panel_yellow_arrow.x + 10,
-  //       scale: 1.3
-  //     },
-  //     curve: curve1
-  //   });
-  // });
-
-  //Bubble Yellow Animation
-  Utils.delay(1, function() {
-    return bubble_1.animate({
-      properties: {
-        scale: 1,
-        x: 250,
-        y: bubble1_pos_y,
-
-
-      },
-      curve: 'cubic-bezier(0.455, 0.03, 0.515, 0.955)',
-      
-    });
-  });
-  
-
-  //Bubble Red Pinda Animation
-  Utils.delay(1.5, function(){
-
-    return bubble_2.animate({
-      properties:{
-        scale: 0.4,
-        x: 500,
-        y: 285
-      },
-      curve: 'cubic-bezier(0.455, 0.03, 0.515, 0.955)'
-      
-    });
-
-  });
-
- //Clock GReen Animation
-  Utils.delay(1, function(){
-
-    return clock_green_back.animate({
-      properties:{
-        width: 250 ,
-        
-      },
-      curve: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
-    });
-
-  });
-
-
+  currentScene += 1;
 });
 
 
 
-
-
-// cookographic_logo.on(Events.DragEnd, function() {
-//   if (cookographic_logo.x < -80) {
-
-//     /* Dragged enough, move to the next slide after a delay */
-//     cookographic_logo.animate({
-//       properties: {
-//         x: -640
-//       },
-//       time: 0.2,
-//       curve: 'ease-out'
-//     });
-//     return Utils.delay(0.6, function() {
-//       return changeScene(1);
-//     });
-//   } else {
-
-//     /* Not dragged enough, move it back */
-//     return cookographic_logo.animate({
-//       properties: {
-//         x: 0
-//       },
-//       time: 0.2,
-//       curve: 'ease-out'
-//     });
-//   }
-// });
