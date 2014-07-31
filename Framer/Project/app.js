@@ -71,7 +71,78 @@ cookographic_mini_logo = new Layer ({x:210, y:top_y-100, width:220, height:130, 
 //clock_green = new Layer ({x:210,y:top_clock_line_y,width:170,height:42, image:"images/slide_01/clock_green.png"})
 
 
+// =========================================
+// BIG RECIPE LAYER ========================
+// =========================================
+recipe_map = new Layer({
+  x: 1030,
+  y: 0,
+  width: 1024,
+  height: 768,
+  image: "images/recipe_map.jpg",
+  superLayer: bgLayer
+});
 
+// searchModal.superLayer = bgLayer;
+
+recipe_map.shadowColor = 'rgba(0,0,0,0.5)';
+recipe_map.shadowBlur = 10;
+// =========================================
+
+// =========================================
+// CHEVRON LAYER ===========================
+// =========================================
+chevron = new Layer({
+  x: 1175,
+  y: 800,
+  width: 21,
+  height: 35,
+  image: "images/back_chevron.png"
+});
+
+
+// =========================================
+
+chevron.on(Events.Click, function() {
+  recipe_map.animate({
+    properties: {
+      x: 0
+    },
+    curve: 'spring(300,40,0)'
+  });
+  chevron.animate({
+    properties: {
+      rotationZ: -180
+    },
+    curve: "spring(100,10,0)"
+  })
+    chevron.on(Events.Click, function() {
+    recipe_map.animate({
+      properties: {
+        x: 1030,
+      },
+      curve: 'spring(300,40,0)'
+    });
+    chevron.animate({
+      properties: {
+        rotationZ: 0
+      },
+      curve: "spring(100,10,0)"
+    });
+  // return chevron.animate({
+  //   properties: {
+  //     rotationZ: 0
+  //   },
+  //   curve: 'spring(300,40,0)'
+  // });
+  // return recipe_map.animate({
+  //   properties: {
+      
+  //   },
+  //   curve: 'spring(300,40,0)'
+  // });  
+  });
+});
 
 
 
