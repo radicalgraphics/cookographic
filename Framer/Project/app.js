@@ -117,6 +117,7 @@ clock_green_back.superLayer = bgLayer
 /* A couple shortcut functions */
 
 Layer.prototype.fadeIn = function() {
+
   return this.animate({
     properties: {
       opacity: 1
@@ -137,6 +138,26 @@ Layer.prototype.fadeOut = function() {
 };
 
 
+Layer.prototype.fadeInSlow = function() {
+
+  return this.animate({
+    properties: {
+      opacity: 1
+    },
+    curve: 'ease-in-out',
+    time: 1.3
+  });
+};
+
+Layer.prototype.fadeOutSlow = function() {
+  return this.animate({
+    properties: {
+      opacity: 0
+    },
+    curve: 'ease-in-out',
+    time: 1.3
+  });
+};
 
 ////////////////
 /// ====  Init Animations
@@ -332,6 +353,67 @@ bubble_1.properties = {
 
 bubble_1.opacity = 0;
 
+
+// Define 
+// Bubble Yellow Dry noodles (   )
+
+bubble_3 = new Layer({x:890,y:235,width:214, height:183, image:"images/slide_02/yellow_dry_noodles.png"})
+
+bubble_3.superLayer = bgLayer;
+
+bubble_3.properties = {
+  scale : 0.5
+};
+
+bubble_3.opacity = 0;
+
+// Define
+// Yellow Arrow Noodles
+
+arrow_1 = new Layer ({x:80, y:305, width:208, height:45, image:"images/slide_02/yellow_arrow_noodles.png"})
+
+arrow_1.superLayer = bgLayer;
+
+arrow_1.placeBehind(bubble_2);
+
+
+arrow_1.opacity = 0;
+
+// Define
+// Yellow Arrow Noodles line
+
+yellow_line = new Layer({
+
+  x:100,
+  y:320,
+  height:15,
+  width:5,
+  backgroundColor: "#fedb0e",
+  borderRadius: "2px"
+})
+
+yellow_line.superLayer = bgLayer;
+yellow_line.placeBehind(arrow_1);
+yellow_line.opacity = 0;
+
+// =========================================
+// BIG RECIPE MAP LAYER ====================
+// =========================================
+recipe_map = new Layer({
+  x: 1030,
+  y: 0,
+  width: 1024,
+  height: 768,
+  image: "images/recipe_map.jpg",
+  superLayer: bgLayer
+});
+
+// searchModal.superLayer = bgLayer;
+
+recipe_map.shadowColor = 'rgba(0,0,0,0.5)';
+recipe_map.shadowBlur = 10;
+// =========================================
+
 changeScene = function(scene) {
   switch (scene) {
     case 1:
@@ -423,7 +505,9 @@ changeScene = function(scene) {
 
 
 
-
+//////////////////////////
+//////// CASE 2
+//////////////////////////
     case 2:
 
       bubble_1.animate({
@@ -432,6 +516,59 @@ changeScene = function(scene) {
           x: -100 , 
         },
       });
+
+      Utils.delay(0.8, function(){
+
+          bubble_1.fadeOutSlow();
+
+          arrow_1.fadeInSlow();
+
+          //Yellow Arrow Left movement
+          s01_base_left_panel_yellow_arrow.animate({
+            properties: {
+              x: s01_base_left_panel_yellow_arrow.x - 10,
+              scale: 1
+            },
+            curve: curve1
+          });
+
+          //Red Arrow Left movement
+          s01_base_left_panel_red_arrow.animate({
+            properties: {
+              x: s01_base_left_panel_red_arrow.x + 10,
+              scale: 1.3
+            },
+            curve: curve1
+          });
+
+
+          yellow_line.fadeInSlow();
+          
+          Utils.delay(0.5, function(){
+            yellow_line.animate({
+              properties:{
+                width:850,
+              },
+              curve: 'cubic-bezier(0.215, 0.61, 0.355, 1)',
+              time: 1
+            });
+
+            bubble_3.fadeIn();
+          });
+          
+
+
+
+      });
+
+      bubble_2.animate({
+        properties:{
+          scale:1,
+          x:200,
+        },
+      });
+
+      
 
       //Clock GReen Animation
      return Utils.delay(0.2, function(){
@@ -446,6 +583,11 @@ changeScene = function(scene) {
 
       });
 
+
+//////////////////////////
+//////// CASE 3
+//////////////////////////
+    
     //case 3:
 
 
