@@ -73,7 +73,7 @@ cookographic_mini_logo = new Layer ({x:210, y:top_y-100, width:220, height:130, 
 
 
 // =========================================
-// CHEVRON LAYER ===========================
+// CHEVRON LAYER + STATES + EVENTS =========
 // =========================================
 chevron = new Layer({
   x: 1175,
@@ -83,51 +83,24 @@ chevron = new Layer({
   image: "images/back_chevron.png"
 });
 
-
-// =========================================
-
-chevron.on(Events.Click, function() {
-  recipe_map.animate({
-    properties: {
-      x: 0
-    },
-    curve: 'spring(300,40,0)'
-  });
-  chevron.animate({
-    properties: {
-      rotationZ: -180
-    },
-    curve: "spring(100,10,0)"
-  })
-    chevron.on(Events.Click, function() {
-    recipe_map.animate({
-      properties: {
-        x: 1030,
-      },
-      curve: 'spring(300,40,0)'
-    });
-    chevron.animate({
-      properties: {
-        rotationZ: 0
-      },
-      curve: "spring(100,10,0)"
-    });
-  // return chevron.animate({
-  //   properties: {
-  //     rotationZ: 0
-  //   },
-  //   curve: 'spring(300,40,0)'
-  // });
-  // return recipe_map.animate({
-  //   properties: {
-      
-  //   },
-  //   curve: 'spring(300,40,0)'
-  // });  
-  });
+chevron.states.add({
+  stateIn : {
+    rotation: -180,
+  }
 });
 
+chevron.states.animationOptions = {
+  curve: "spring",
+  curveOptions: {
+    tension: 100,
+    friction: 10
+  }
+};
 
+chevron.on(Events.Click, function() {
+  return chevron.states.next();
+});
+// =========================================
 
 
 clock_green_back = new Layer({
@@ -359,27 +332,6 @@ bubble_1.properties = {
 
 bubble_1.opacity = 0;
 
-
-
-// =========================================
-// BIG RECIPE MAP LAYER ====================
-// =========================================
-recipe_map = new Layer({
-  x: 1030,
-  y: 0,
-  width: 1024,
-  height: 768,
-  image: "images/recipe_map.jpg",
-  superLayer: bgLayer
-});
-
-// searchModal.superLayer = bgLayer;
-
-recipe_map.shadowColor = 'rgba(0,0,0,0.5)';
-recipe_map.shadowBlur = 10;
-// =========================================
-
-
 changeScene = function(scene) {
   switch (scene) {
     case 1:
@@ -513,4 +465,28 @@ button1.on(Events.TouchStart, function() {
 });
 
 
+// =========================================
+// RECIPE MAP LAYER + STATES + EVENTS ======
+// =========================================
+recipe_map = new Layer({
+  x: 1030,
+  y: 0,
+  width: 1024,
+  height: 768,
+  image: "images/recipe_map.jpg",
+  superLayer: bgLayer
+});
 
+recipe_map.states.add({
+  stateIn: {
+    x: 0
+  }
+});
+chevron.on(Events.Click, function() {
+  return recipe_map.states.next();
+});
+
+recipe_map.states.animationOptions = {
+  curve: "cubic-bezier(0.23, 1, 0.32, 1)",
+};
+// =========================================
