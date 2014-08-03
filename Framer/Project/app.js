@@ -7,6 +7,7 @@ var top_y = 100
 
 var top_clock_line_y = 250
 
+var currentScene = 1
 
 var curve1 = "spring(300,20,10)";
 
@@ -114,8 +115,15 @@ clock_green_back = new Layer({
 
 clock_green_back.superLayer = bgLayer
 
-/* A couple shortcut functions */
 
+
+
+//////////////////////////////
+//////////////////////////////
+//////////////////////////////
+//////////////////////////////
+/* A couple shortcut functions */
+//////////////////////////////
 Layer.prototype.fadeIn = function() {
 
   return this.animate({
@@ -158,6 +166,29 @@ Layer.prototype.fadeOutSlow = function() {
     time: 1.3
   });
 };
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
 
 ////////////////
 /// ====  Init Animations
@@ -319,9 +350,23 @@ button1.style = textStyle
 
 
 
+
+
+
+
+
 ////////////////////////////////////
 // Main Loop
 ////////////////////////////////////
+
+
+
+
+
+
+
+
+
 
 
 //Define
@@ -396,6 +441,46 @@ yellow_line.superLayer = bgLayer;
 yellow_line.placeBehind(arrow_1);
 yellow_line.opacity = 0;
 
+
+//Define
+// CheckMark
+
+var checkmark, checkmarkChecked;
+
+checkmark = new Layer({
+  x: 264,
+  y: 420,
+  width: 56,
+  height: 56,
+  image: "images/checkmarkUnchecked.png"
+});
+
+checkmarkChecked = new Layer({
+  x: 264,
+  y: 420,
+  width: 56,
+  height: 56,
+  image: "images/checkmarkChecked.png"
+});
+
+checkmarkChecked.scale = 0;
+
+checkmarkChecked.superLayer = bgLayer;
+checkmark.superLayer = bgLayer;
+
+
+
+checkmarkChecked.opacity = 0;
+checkmark.opacity = 0;
+
+
+
+
+
+
+
+
+
 // =========================================
 // BIG RECIPE MAP LAYER ====================
 // =========================================
@@ -460,6 +545,26 @@ changeScene = function(scene) {
 
       //Bubble Yellow Animation
       Utils.delay(1, function() {
+        
+        Utils.delay(1, function(){
+          checkmarkChecked.superLayer = bubble_1;
+          checkmark.superLayer = bubble_1;
+
+          checkmark.fadeIn();
+          checkmarkChecked.fadeIn();
+
+          checkmark.on(Events.TouchEnd, function() {
+        
+              Utils.delay(0.5, function(){
+                  changeScene(currentScene);
+                  currentScene += 1;
+              });
+              
+
+          });
+        });
+        
+
         return bubble_1.animate({
           properties: {
             scale: 1,
@@ -489,6 +594,7 @@ changeScene = function(scene) {
 
       });
 
+      
      //Clock GReen Animation
      return Utils.delay(1.5, function(){
 
@@ -568,6 +674,33 @@ changeScene = function(scene) {
         },
       });
 
+      //Check mark controller on case 2
+      Utils.delay(1, function(){
+          
+          //We reset the checkmark
+          checkmark.scale = checkmarkChecked.scale;
+          checkmarkChecked.animateStop();
+          checkmarkChecked.scale = 0;
+
+          //we put it inside the bubble_2 red pindas
+          checkmarkChecked.superLayer = bubble_2;
+          checkmark.superLayer = bubble_2;
+
+
+          checkmark.fadeIn();
+          checkmarkChecked.fadeIn();
+
+          checkmark.on(Events.TouchEnd, function() {
+        
+              Utils.delay(0.5, function(){
+                  changeScene(currentScene);
+                  currentScene += 1;
+              });
+              
+
+          });
+        });
+
       
 
       //Clock GReen Animation
@@ -598,7 +731,7 @@ changeScene = function(scene) {
 
 ////MAIN LOOP CONTROLLER
 
-var currentScene = 1
+
 
 button1.on(Events.TouchStart, function() {
   changeScene(currentScene);
@@ -632,3 +765,58 @@ recipe_map.states.animationOptions = {
   curve: "cubic-bezier(0.23, 1, 0.32, 1)",
 };
 // =========================================
+
+
+
+
+// ========================================
+// EVENTS CONTROLLING THE CheckMark
+// ========================================
+
+/* We want the checkmark to scale down when the user initiallyclicks or touches to provide feedback */
+
+checkmark.on(Events.TouchStart, function() {
+  return checkmark.animate({
+    properties: {
+      scale: .8
+    },
+    curve: "spring(200,15,0)"
+  });
+});
+
+/* When the click or touch ends, we want to swap the checkmark and scale back up to 1. We set checkmarkChecked to the current scale of checkmark (this makes sure they're always in sync) and then immediately set the scale of checkmark to 0. We then call animateStop() on checkmark, in case the spring is still oscillating, then set checkmark's scale to 0 and finally animate checkmarkChecked back to the proper scale. */
+
+checkmark.on(Events.TouchEnd, function() {
+  checkmarkChecked.scale = checkmark.scale;
+  checkmark.animateStop();
+  checkmark.scale = 0;
+  return checkmarkChecked.animate({
+    properties: {
+      scale: 1
+    },
+    curve: "spring(200,15,0)"
+  });
+});
+
+/* We also want to be able to toggle the selection state of the checkmark, so we apply the same events with the opposite effects to checkmarkChecked */
+
+checkmarkChecked.on(Events.TouchStart, function() {
+  return checkmarkChecked.animate({
+    properties: {
+      scale: .8
+    },
+    curve: "spring(200,15,0)"
+  });
+});
+
+checkmarkChecked.on(Events.TouchEnd, function() {
+  checkmark.scale = checkmarkChecked.scale;
+  checkmarkChecked.animateStop();
+  checkmarkChecked.scale = 0;
+  return checkmark.animate({
+    properties: {
+      scale: 1
+    },
+    curve: "spring(200,15,0)"
+  });
+});
