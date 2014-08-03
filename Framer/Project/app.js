@@ -621,6 +621,7 @@ changeScene = function(scene) {
           scale: 0.3,
           x: -100 , 
         },
+       curve: 'cubic-bezier(0.645, 0.045, 0.355, 1)'
       });
 
       Utils.delay(0.8, function(){
@@ -650,7 +651,7 @@ changeScene = function(scene) {
 
           yellow_line.fadeInSlow();
           
-          Utils.delay(0.5, function(){
+          Utils.delay(0.3, function(){
             yellow_line.animate({
               properties:{
                 width:850,
@@ -721,7 +722,69 @@ changeScene = function(scene) {
 //////// CASE 3
 //////////////////////////
     
-    //case 3:
+    case 3:
+
+        bubble_2.animate({
+        properties:{
+          scale: 0.3,
+          x: -100 , 
+        },
+       curve: 'cubic-bezier(0.645, 0.045, 0.355, 1)'
+      });
+
+      Utils.delay(0.8, function(){
+
+          bubble_2.fadeOutSlow();
+
+          //arrow_2.fadeInSlow();
+
+          //Yellow Arrow Left movement
+          s01_base_left_panel_red_arrow.animate({
+            properties: {
+              x: s01_base_left_panel_red_arrow.x - 10,
+              scale: 1
+            },
+            curve: curve1
+          });
+
+          bubble_3.animate({
+                
+            properties:{
+            scale:1,
+            x:600,
+            },
+          });
+          
+          
+          Utils.delay(0.3, function(){
+            yellow_line.animate({
+              properties:{
+                width:650,
+              },
+              curve: 'cubic-bezier(0.215, 0.61, 0.355, 1)',
+              time: 1
+            });
+
+            //bubble_4.fadeIn();
+          });
+
+
+
+
+      });
+      //Clock GReen Animation
+     return Utils.delay(0.5, function(){
+
+        return clock_green_back.animate({
+          properties:{
+            width: clock_green_back.width + 100 ,
+            
+          },
+          curve: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+        });
+
+      });
+
 
 
     }
