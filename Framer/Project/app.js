@@ -12,8 +12,8 @@ var currentScene = 1
 var curve1 = "spring(300,20,10)";
 
 bgLayer = new Layer({
-  x: 210,
-  y: 150,
+  x: 250,
+  y: 10,
   width: 1024,
   height: 768,
   // backgroundColor: '#e9e9e9'
@@ -51,11 +51,30 @@ s01_base_left_panel_yellow_arrow.superLayer = bgLayer;
 s01_base_left_panel_grey_arrow.superLayer = bgLayer;
 s01_base_left_panel_red_arrow.superLayer = bgLayer;
 
-s01_base_right_panel_purple_circle = new Layer ({x:975, y:top_clock_line_y - 45, width:42, height: 42, image:"images/base_slide/base_right_panel_purple_circle.png"})
-s01_base_right_panel_green_circle = new Layer ({x:975, y:top_clock_line_y + 55, width:42, height: 42, image:"images/base_slide/base_right_panel_green_circle.png"})
-s01_base_right_panel_yellow_circle = new Layer ({x:975, y:top_clock_line_y + 155, width:42, height: 42, image:"images/base_slide/base_right_panel_yellow_circle.png"})
-s01_base_right_panel_grey_circle = new Layer ({x:975, y:top_clock_line_y + 255, width:42, height: 42, image:"images/base_slide/base_right_panel_grey_circle.png"})
-s01_base_right_panel_red_circle = new Layer ({x:975, y:top_clock_line_y + 355, width:42, height: 42, image:"images/base_slide/base_right_panel_red_circle.png"})
+s01_base_right_panel_purple_circle = new Layer ({x:975, y:top_clock_line_y - 45, width:42, height: 42,   backgroundColor: "#8b2786",  borderRadius: "25px"})
+s01_base_right_panel_purple_circle.html = "3"
+s01_base_right_panel_green_circle = new Layer ({x:975, y:top_clock_line_y + 55, width:42, height: 42, backgroundColor: "#afd46a",  borderRadius: "25px"})
+s01_base_right_panel_green_circle.html = "0"
+s01_base_right_panel_yellow_circle = new Layer ({x:975, y:top_clock_line_y + 155, width:42, height: 42, backgroundColor: "#fedc0e",  borderRadius: "25px"})
+s01_base_right_panel_yellow_circle.html = "2"
+s01_base_right_panel_grey_circle = new Layer ({x:975, y:top_clock_line_y + 255, width:42, height: 42, backgroundColor: "#beba90",  borderRadius: "25px"})
+s01_base_right_panel_grey_circle.html = "3"
+s01_base_right_panel_red_circle = new Layer ({x:975, y:top_clock_line_y + 355, width:42, height: 42, backgroundColor: "#ed3752",  borderRadius: "25px"})
+s01_base_right_panel_red_circle.html = "4"
+
+textStyle = {
+  "font-size": "0.8em",
+  "text-align": "center",
+  "line-height" : "40px"
+};
+
+
+s01_base_right_panel_purple_circle.style = textStyle
+s01_base_right_panel_green_circle.style = textStyle
+s01_base_right_panel_yellow_circle.style = textStyle
+s01_base_right_panel_grey_circle.style = textStyle
+s01_base_right_panel_red_circle.style = textStyle
+
 
 s01_base_right_panel_purple_circle.superLayer = bgLayer;
 s01_base_right_panel_green_circle.superLayer = bgLayer;
@@ -67,9 +86,10 @@ s01_base_right_panel_red_circle.superLayer = bgLayer;
 
 //cookographic_logo = new Layer ({x:210, y:120, width:666, height:398, image:"images/cookographic-logo.jpg"})
 
-cookographic_mini_logo = new Layer ({x:210, y:top_y-100, width:220, height:130, image:"images/cookographic-logo.jpg"})
-radical_logo = new Layer ({x:1080, y:top_y-60, width:145, height:83, image:"images/radical_logo.jpg"})
-janssen_logo = new Layer ({x:1010, y:top_y-50, width:60, height:61, image:"images/janssen_logo.jpg"})
+cookographic_mini_logo = new Layer ({x:10, y:top_y, width:220, height:125, image:"images/cookographic-logo.jpg"})
+radical_logo = new Layer ({x:50, y:top_y+600, width:185, height:100, image:"images/radical_logo.jpg"})
+//janssen_logo = new Layer ({x:90, y:top_y+550, width:60, height:61, image:"images/janssen_logo.jpg"})
+janssen_logo_2 = new Layer ({x:200, y:top_y+300, width:35, height:314, image:"images/janssen_logo_2.png"})
 //clock_green = new Layer ({x:210,y:top_clock_line_y,width:170,height:42, image:"images/slide_01/clock_green.png"})
 
 
@@ -79,7 +99,7 @@ janssen_logo = new Layer ({x:1010, y:top_y-50, width:60, height:61, image:"image
 // =========================================
 chevron = new Layer({
   x: 1175,
-  y: 800,
+  y: 680,
   width: 21,
   height: 35,
   image: "images/back_chevron.png"
@@ -330,7 +350,7 @@ cookographic_mini_logo.on(Events.DragEnd, function(event, layer) {
 //////////////////////
 
 button1 = new Layer({
-  x: 50,
+  x: 90,
   y: 20,
   width: 64,
   height: 64,
@@ -403,12 +423,12 @@ bubble_1.opacity = 0;
 // Define 
 // Bubble Yellow Dry noodles (   )
 
-bubble_3 = new Layer({x:890,y:235,width:214, height:183, image:"images/slide_02/yellow_dry_noodles.png"})
+bubble_3 = new Layer({x:700,y:bubble1_pos_y,width:575, height:487, image:"images/slide_02/yellow_dry_noodles.png"})
 
 bubble_3.superLayer = bgLayer;
 
 bubble_3.properties = {
-  scale : 0.5
+  scale : 0.1
 };
 
 bubble_3.opacity = 0;
@@ -555,6 +575,10 @@ changeScene = function(scene) {
         curve: curve1
       });
 
+      //Update number of upcoming steps
+      s01_base_right_panel_red_circle.html = "3"
+      s01_base_right_panel_yellow_circle.html = "1"
+
       //Yellow Arrow Left movement
       s01_base_left_panel_yellow_arrow.animate({
         properties: {
@@ -667,6 +691,9 @@ changeScene = function(scene) {
        curve: 'cubic-bezier(0.645, 0.045, 0.355, 1)'
       });
 
+      //Update upcoming steps
+      s01_base_right_panel_yellow_circle.html = "0"
+
       Utils.delay(0.8, function(){
 
           bubble_1.fadeOutSlow();
@@ -704,6 +731,12 @@ changeScene = function(scene) {
             });
 
             bubble_3.fadeIn();
+            bubble_3.animate({
+              properties: {
+                scale: 0.2
+              },
+              curve: curve1
+            });
           });
           
 
@@ -794,10 +827,37 @@ changeScene = function(scene) {
                 
             properties:{
             scale:1,
-            x:600,
+            x:250,
             },
           });
           
+          //Check mark controller on case 3
+          Utils.delay(1, function(){
+          
+          //We reset the checkmark
+          checkmark.scale = checkmarkChecked.scale;
+          checkmarkChecked.animateStop();
+          checkmarkChecked.scale = 0;
+
+          //we put it inside the bubble_2 red pindas
+          checkmarkChecked.superLayer = bubble_3;
+          checkmark.superLayer = bubble_3;
+
+
+          checkmark.fadeIn();
+          checkmarkChecked.fadeIn();
+
+          checkmark.on(Events.TouchEnd, function() {
+        
+              Utils.delay(0.5, function(){
+                  changeScene(currentScene);
+                  currentScene += 1;
+              });
+              
+
+          });
+        });
+
           
           Utils.delay(0.3, function(){
             yellow_line.animate({
