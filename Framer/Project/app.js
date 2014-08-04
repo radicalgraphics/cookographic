@@ -68,7 +68,8 @@ s01_base_right_panel_red_circle.superLayer = bgLayer;
 //cookographic_logo = new Layer ({x:210, y:120, width:666, height:398, image:"images/cookographic-logo.jpg"})
 
 cookographic_mini_logo = new Layer ({x:210, y:top_y-100, width:220, height:130, image:"images/cookographic-logo.jpg"})
-
+radical_logo = new Layer ({x:1080, y:top_y-60, width:145, height:83, image:"images/radical_logo.jpg"})
+janssen_logo = new Layer ({x:1010, y:top_y-50, width:60, height:61, image:"images/janssen_logo.jpg"})
 //clock_green = new Layer ({x:210,y:top_clock_line_y,width:170,height:42, image:"images/slide_01/clock_green.png"})
 
 
@@ -413,6 +414,19 @@ bubble_3.properties = {
 bubble_3.opacity = 0;
 
 // Define
+// Bubble Red Roasted Pindas
+
+bubble_4 = new Layer({x:890,y:435,width:214, height:183, image:"images/slide_03/red_roasted_pinda.png"})
+
+bubble_4.superLayer = bgLayer;
+
+bubble_4.properties = {
+  scale : 0.5
+};
+
+bubble_4.opacity = 0;
+
+// Define
 // Yellow Arrow Noodles
 
 arrow_1 = new Layer ({x:80, y:305, width:208, height:45, image:"images/slide_02/yellow_arrow_noodles.png"})
@@ -440,6 +454,35 @@ yellow_line = new Layer({
 yellow_line.superLayer = bgLayer;
 yellow_line.placeBehind(arrow_1);
 yellow_line.opacity = 0;
+
+// Define
+// Red Arrow Pindas
+
+arrow_2 = new Layer ({x:80, y:505, width:208, height:45, image:"images/slide_03/red_arrow_pindas.png"})
+
+arrow_2.superLayer = bgLayer;
+
+arrow_2.placeBehind(bubble_3);
+
+arrow_2.opacity = 0;
+
+
+// Define 
+// Red Arrow Pindas Line
+
+red_line = new Layer({
+
+  x:100,
+  y:522,
+  height:15,
+  width:5,
+  backgroundColor: "#ee3753",
+  borderRadius: "2px"
+})
+
+red_line.superLayer = bgLayer;
+red_line.placeBehind(arrow_2);
+red_line.opacity = 0;
 
 
 //Define
@@ -671,7 +714,7 @@ changeScene = function(scene) {
       bubble_2.animate({
         properties:{
           scale:1,
-          x:200,
+          x:250,
         },
       });
 
@@ -736,7 +779,7 @@ changeScene = function(scene) {
 
           bubble_2.fadeOutSlow();
 
-          //arrow_2.fadeInSlow();
+          arrow_2.fadeInSlow();
 
           //Yellow Arrow Left movement
           s01_base_left_panel_red_arrow.animate({
@@ -765,10 +808,16 @@ changeScene = function(scene) {
               time: 1
             });
 
-            //bubble_4.fadeIn();
+            bubble_4.fadeIn();
           });
-
-
+          red_line.fadeIn();
+          red_line.animate({
+            properties:{
+              width:850,
+            },
+            curve: 'cubic-bezier(0.215, 0.61, 0.355, 1)',
+            time:1
+          });
 
 
       });
