@@ -537,35 +537,14 @@ checkmarkChecked.opacity = 0;
 checkmark.opacity = 0;
 
 
-
-
-
-
-
-
-
-// =========================================
-// BIG RECIPE MAP LAYER ====================
-// =========================================
-recipe_map = new Layer({
-  x: 1030,
-  y: 0,
-  width: 1024,
-  height: 768,
-  image: "images/recipe_map.jpg",
-  superLayer: bgLayer
-});
-
-// searchModal.superLayer = bgLayer;
-
-recipe_map.shadowColor = 'rgba(0,0,0,0.5)';
-recipe_map.shadowBlur = 10;
-// =========================================
-
 changeScene = function(scene) {
   switch (scene) {
     case 1:
 
+      chevron.on(Events.Click, function() {
+        recipe_map.opacity = 0;
+        return recipe_map_01.states.next();
+      });
       //Bubble Woek Noodles yellow FadeIn
       bubble_1.fadeIn();
       bubble_1.animate({
@@ -682,6 +661,10 @@ changeScene = function(scene) {
 //////// CASE 2
 //////////////////////////
     case 2:
+
+      chevron.on(Events.Click, function() {
+        return recipe_map_02.states.next();
+      });
 
       bubble_1.animate({
         properties:{
@@ -800,6 +783,10 @@ changeScene = function(scene) {
     
     case 3:
 
+      chevron.on(Events.Click, function() {
+        return recipe_map_03.states.next();
+      });
+
         bubble_2.animate({
         properties:{
           scale: 0.3,
@@ -915,20 +902,36 @@ button1.on(Events.TouchStart, function() {
 // =========================================
 // RECIPE MAP LAYER + STATES + EVENTS ======
 // =========================================
-recipe_map = new Layer({
-  x: 1030,
-  y: 0,
-  width: 1024,
-  height: 768,
-  image: "images/recipe_map.jpg",
-  superLayer: bgLayer
-});
+recipe_map = new Layer({ x: 1030, y: 0, width: 1024, height: 768, image: "images/recipe_map_00.jpg", superLayer: bgLayer });
+recipe_map_01 = new Layer({ x: 1030, y: 0, width: 1024, height: 768, image: "images/recipe_map_01.jpg", superLayer: bgLayer });
+recipe_map_02 = new Layer({ x: 1030, y: 0, width: 1024, height: 768, image: "images/recipe_map_02.jpg", superLayer: bgLayer });
+recipe_map_03 = new Layer({ x: 1030, y: 0, width: 1024, height: 768, image: "images/recipe_map_03.jpg", superLayer: bgLayer });
+recipe_map_04 = new Layer({ x: 1030, y: 0, width: 1024, height: 768, image: "images/recipe_map_04.jpg", superLayer: bgLayer });
+recipe_map_05 = new Layer({ x: 1030, y: 0, width: 1024, height: 768, image: "images/recipe_map_05.jpg", superLayer: bgLayer });
+recipe_map_06 = new Layer({ x: 1030, y: 0, width: 1024, height: 768, image: "images/recipe_map_06.jpg", superLayer: bgLayer });
+recipe_map_07 = new Layer({ x: 1030, y: 0, width: 1024, height: 768, image: "images/recipe_map_07.jpg", superLayer: bgLayer });
+recipe_map_08 = new Layer({ x: 1030, y: 0, width: 1024, height: 768, image: "images/recipe_map_08.jpg", superLayer: bgLayer });
+recipe_map_09 = new Layer({ x: 1030, y: 0, width: 1024, height: 768, image: "images/recipe_map_09.jpg", superLayer: bgLayer });
+recipe_map_10 = new Layer({ x: 1030, y: 0, width: 1024, height: 768, image: "images/recipe_map_10.jpg", superLayer: bgLayer });
+recipe_map_11 = new Layer({ x: 1030, y: 0, width: 1024, height: 768, image: "images/recipe_map_11.jpg", superLayer: bgLayer });
+recipe_map_12 = new Layer({ x: 1030, y: 0, width: 1024, height: 768, image: "images/recipe_map_12.jpg", superLayer: bgLayer });
+// =========================================
 
-recipe_map.states.add({
-  stateIn: {
-    x: 0
-  }
-});
+recipe_map.states.add({ stateIn: { x: 0 } });
+recipe_map_01.states.add({ stateIn: { x: 0 } });
+recipe_map_02.states.add({ stateIn: { x: 0 } });
+recipe_map_03.states.add({ stateIn: { x: 0 } });
+recipe_map_04.states.add({ stateIn: { x: 0 } });
+recipe_map_05.states.add({ stateIn: { x: 0 } });
+recipe_map_06.states.add({ stateIn: { x: 0 } });
+recipe_map_07.states.add({ stateIn: { x: 0 } });
+recipe_map_08.states.add({ stateIn: { x: 0 } });
+recipe_map_09.states.add({ stateIn: { x: 0 } });
+recipe_map_10.states.add({ stateIn: { x: 0 } });
+recipe_map_11.states.add({ stateIn: { x: 0 } });
+recipe_map_12.states.add({ stateIn: { x: 0 } });
+
+
 chevron.on(Events.Click, function() {
   return recipe_map.states.next();
 });
