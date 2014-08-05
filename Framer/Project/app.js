@@ -93,38 +93,6 @@ janssen_logo_2 = new Layer ({x:200, y:top_y+300, width:35, height:314, image:"im
 //clock_green = new Layer ({x:210,y:top_clock_line_y,width:170,height:42, image:"images/slide_01/clock_green.png"})
 
 
-
-// =========================================
-// CHEVRON LAYER + STATES + EVENTS =========
-// =========================================
-chevron = new Layer({
-  x: 1175,
-  y: 680,
-  width: 21,
-  height: 35,
-  image: "images/back_chevron.png"
-});
-
-chevron.states.add({
-  stateIn : {
-    rotation: -180,
-  }
-});
-
-chevron.states.animationOptions = {
-  curve: "spring",
-  curveOptions: {
-    tension: 100,
-    friction: 10
-  }
-};
-
-chevron.on(Events.Click, function() {
-  return chevron.states.next();
-});
-// =========================================
-
-
 clock_green_back = new Layer({
   width: 100,
   height: 42,
@@ -1053,17 +1021,122 @@ recipe_map_10.states.add({ stateIn: { x: 0 } });
 recipe_map_11.states.add({ stateIn: { x: 0 } });
 recipe_map_12.states.add({ stateIn: { x: 0 } });
 
+recipe_map.draggable.enabled = true; recipe_map.draggable.speedY = 0;
+recipe_map_01.draggable.enabled = true; recipe_map_01.draggable.speedY = 0;
+recipe_map_02.draggable.enabled = true; recipe_map_02.draggable.speedY = 0;
+recipe_map_03.draggable.enabled = true; recipe_map_03.draggable.speedY = 0;
+recipe_map_04.draggable.enabled = true; recipe_map_04.draggable.speedY = 0;
+recipe_map_05.draggable.enabled = true; recipe_map_05.draggable.speedY = 0;
+recipe_map_06.draggable.enabled = true; recipe_map_06.draggable.speedY = 0;
+recipe_map_07.draggable.enabled = true; recipe_map_07.draggable.speedY = 0;
+recipe_map_08.draggable.enabled = true; recipe_map_08.draggable.speedY = 0;
+recipe_map_09.draggable.enabled = true; recipe_map_09.draggable.speedY = 0;
+recipe_map_10.draggable.enabled = true; recipe_map_10.draggable.speedY = 0;
+recipe_map_11.draggable.enabled = true; recipe_map_11.draggable.speedY = 0;
+recipe_map_12.draggable.enabled = true; recipe_map_12.draggable.speedY = 0;
 
-chevron.on(Events.Click, function() {
-  return recipe_map.states.next();
-});
 
 recipe_map.states.animationOptions = {
   curve: "cubic-bezier(0.23, 1, 0.32, 1)",
 };
 // =========================================
 
+// =========================================
+// CHEVRON LAYER + STATES + EVENTS =========
+// =========================================
+chevron = new Layer({ x: 1175, y: 680, width: 21, height: 35, image: "images/back_chevron.png" });
+chevron2 = new Layer({ x: 1165, y: 680, width: 21, height: 35, opacity: 0.7, image: "images/back_chevron.png"});
+chevron3 = new Layer({ x: 1155, y: 680, width: 21, height: 35, opacity: 0.4, image: "images/back_chevron.png"});
 
+chevron_origin_x = chevron.x;
+chevron_origin_y = chevron.y;
+
+chevron.states.add({
+  stateIn : {
+    rotation: -180,
+  }
+});
+
+chevron.states.animationOptions = {
+  curve: "spring",
+  curveOptions: {
+    tension: 100,
+    friction: 10
+  }
+};
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+chevron.draggable.enabled = true;
+chevron.draggable.speedY = 0;
+chevron.on(Events.DragMove, function(){
+
+  return recipe_map.animate({
+    properties: {
+      x: recipe_map.x - 15
+    },
+    curve: "cubic-bezier(0.23, 1, 0.32, 1)",
+  });
+});
+
+chevron.on(Events.DragEnd, function () {
+  if (chevron.x < 1100) {
+      recipe_map.states.next();
+      chevron.animate({
+        properties: {
+          x: chevron_origin_x,
+          y: chevron_origin_y,
+        },
+        curve: "spring",
+        curveOptions: {
+          tension: 100,
+          friction: 10
+        }
+      });
+      // chevron.states.next();
+      chevron.opacity = 0
+      chevron2.opacity = 0
+      chevron3.opacity = 0
+  } else {
+    recipe_map.animate({
+      properties: {
+        x: 1030
+      }
+    });
+      chevron.animate({
+        properties: {
+          x: chevron_origin_x,
+          y: chevron_origin_y,
+        },
+        curve: "spring",
+        curveOptions: {
+          tension: 100,
+          friction: 10
+        }
+      });    
+  }
+});
+
+recipe_map.on(Events.DragEnd, function () {
+  if (recipe_map.x > 50) {
+    recipe_map.states.next();
+    Utils.delay(0.7, function(){
+      chevron.fadeIn();
+      chevron2.fadeIn();
+      chevron3.fadeIn();
+    })
+    Utils.delay(1.1, function(){
+      chevron.opacity = 1
+      chevron2.opacity = 0.7
+      chevron3.opacity = 0.4
+    })
+  }
+});
+
+// chevron.on(Events.Click, function() {
+  
+// });
+// =========================================
 
 
 // ========================================
