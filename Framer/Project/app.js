@@ -7,7 +7,7 @@ var top_y = 100
 
 var top_clock_line_y = 250
 
-var currentScene = 1
+var currentScene = 0
 
 var curve1 = "spring(300,20,10)";
 
@@ -387,7 +387,20 @@ button1.style = textStyle
 
 
 
+// Define
+// Bubble Purple Pindas in bakkie
 
+bubble_5 = new Layer({x:700,y:-115,width:577, height:488, image:"images/slide_04/pindas_in_bakkie.png"})
+
+bubble_5.superLayer = bgLayer;
+bubble_5.placeBehind = s01_top_counter_clock;
+
+
+bubble_5.properties = {
+  scale : 0.2
+};
+
+bubble_5.opacity = 0;
 
 
 //Define
@@ -436,15 +449,21 @@ bubble_3.opacity = 0;
 // Define
 // Bubble Red Roasted Pindas
 
-bubble_4 = new Layer({x:890,y:435,width:214, height:183, image:"images/slide_03/red_roasted_pinda.png"})
+bubble_4 = new Layer({x:700,y:285,width:532, height:487, image:"images/slide_03/red_roasted_pinda.png"})
 
 bubble_4.superLayer = bgLayer;
 
 bubble_4.properties = {
-  scale : 0.5
+  scale : 0.2
 };
 
 bubble_4.opacity = 0;
+
+
+
+
+
+
 
 // Define
 // Yellow Arrow Noodles
@@ -538,6 +557,10 @@ checkmark.opacity = 0;
 
 
 changeScene = function(scene) {
+  
+  //Updated the scene number on screen
+  step_layer.html = scene;
+
   switch (scene) {
     case 1:
 
@@ -599,11 +622,12 @@ changeScene = function(scene) {
           checkmark.fadeIn();
           checkmarkChecked.fadeIn();
 
-          checkmark.on(Events.TouchEnd, function() {
+          checkmark.on(Events.TouchStart, function() {
         
               Utils.delay(0.5, function(){
+                  currentScene = 2;
                   changeScene(currentScene);
-                  currentScene += 1;
+                  
               });
               
 
@@ -750,11 +774,12 @@ changeScene = function(scene) {
           checkmark.fadeIn();
           checkmarkChecked.fadeIn();
 
-          checkmark.on(Events.TouchEnd, function() {
+          checkmark.on(Events.TouchStart, function() {
         
               Utils.delay(0.5, function(){
+                  currentScene = 3;
                   changeScene(currentScene);
-                  currentScene += 1;
+                  
               });
               
 
@@ -787,7 +812,7 @@ changeScene = function(scene) {
         return recipe_map_03.states.next();
       });
 
-        bubble_2.animate({
+      bubble_2.animate({
         properties:{
           scale: 0.3,
           x: -100 , 
@@ -821,25 +846,26 @@ changeScene = function(scene) {
           //Check mark controller on case 3
           Utils.delay(1, function(){
           
-          //We reset the checkmark
-          checkmark.scale = checkmarkChecked.scale;
-          checkmarkChecked.animateStop();
-          checkmarkChecked.scale = 0;
+              //We reset the checkmark
+              checkmark.scale = checkmarkChecked.scale;
+              checkmarkChecked.animateStop();
+              checkmarkChecked.scale = 0;
 
-          //we put it inside the bubble_2 red pindas
-          checkmarkChecked.superLayer = bubble_3;
-          checkmark.superLayer = bubble_3;
+              //we put it inside the bubble_2 red pindas
+              checkmarkChecked.superLayer = bubble_3;
+              checkmark.superLayer = bubble_3;
 
 
-          checkmark.fadeIn();
-          checkmarkChecked.fadeIn();
+              checkmark.fadeIn();
+              checkmarkChecked.fadeIn();
 
-          checkmark.on(Events.TouchEnd, function() {
-        
-              Utils.delay(0.5, function(){
-                  changeScene(currentScene);
-                  currentScene += 1;
-              });
+              checkmark.on(Events.TouchStart, function() {
+            
+                  Utils.delay(0.5, function(){
+                      currentScene = 4;
+                      changeScene(currentScene);
+                      
+                  });
               
 
           });
@@ -849,14 +875,16 @@ changeScene = function(scene) {
           Utils.delay(0.3, function(){
             yellow_line.animate({
               properties:{
-                width:650,
+                width:450,
               },
               curve: 'cubic-bezier(0.215, 0.61, 0.355, 1)',
               time: 1
             });
-
+              //Update upcoming steps
+              s01_base_right_panel_red_circle.html = s01_base_right_panel_red_circle.html - 1
             bubble_4.fadeIn();
           });
+          
           red_line.fadeIn();
           red_line.animate({
             properties:{
@@ -882,6 +910,80 @@ changeScene = function(scene) {
       });
 
 
+//////////////////////////
+//////// CASE 4
+//////////////////////////
+    case 4:
+
+        bubble_3.animate({
+        properties:{
+          scale: 0.3,
+          x: -100 , 
+        },
+       curve: 'cubic-bezier(0.645, 0.045, 0.355, 1)'
+        });
+
+        
+
+      Utils.delay(0.5, function(){
+        yellow_line.animate({
+              properties:{
+                width:0,
+              },
+              curve: 'cubic-bezier(0.215, 0.61, 0.355, 1)',
+              time: 1
+            });
+        arrow_1.fadeOutSlow();
+        bubble_3.fadeOutSlow();
+      });
+
+      bubble_5.fadeInSlow();
+
+      Utils.delay(0.5, function(){
+
+          bubble_5.animate({
+                
+            properties:{
+            scale:0.8,
+            x:450,
+            },
+          });
+
+      });
+
+
+      bubble_4.animate({
+          properties:{
+            scale:1,
+            x:250,
+            },
+      });
+
+      red_line.animate({
+          properties:{
+            width:350,
+          },
+          curve: 'cubic-bezier(0.215, 0.61, 0.355, 1)',
+          time: 2
+      });
+
+      //Update upcoming steps (purple)
+      s01_base_right_panel_purple_circle.html = s01_base_right_panel_purple_circle.html - 1
+
+
+      //Clock GReen Animation
+     return Utils.delay(0.5, function(){
+
+        return clock_green_back.animate({
+          properties:{
+            width: clock_green_back.width + 100 ,
+            
+          },
+          curve: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+        });
+
+      });
+
 
     }
 
@@ -890,12 +992,32 @@ changeScene = function(scene) {
 
 ////MAIN LOOP CONTROLLER
 
+step_layer = new Layer({
+  x: 170,
+  y: 20,
+  width: 24,
+  height: 24,
+  backgroundColor: "#c2c2c2",
+  borderRadius: "6px"
+});
+
+textStyle = {
+  "font-size": "12px",
+  "text-align": "center",
+  "line-height" : "25px"
+};
+
+step_layer.html = currentScene
+step_layer.style = textStyle
+
 
 
 button1.on(Events.TouchStart, function() {
+  currentScene = currentScene + 1;
   changeScene(currentScene);
 
-  currentScene += 1;
+  
+  
 });
 
 
