@@ -24,8 +24,7 @@ bgLayer.style = {
 bgLayer.clip = true;
 
 
-s01_top_counter_clock = new Layer ({x:0, y:100, width:1096, height: 42, image:"images/slide_01/s01_top_counter_clock.png"})
-s01_top_counter_clock.superLayer = bgLayer;
+
 
 s01_base_purple_path = new Layer ({x:0, y:top_clock_line_y - 25, z:-1, width:996, height: 6, image:"images/base_slide/base_purple_path.png"})
 s01_base_green_path = new Layer ({x:0, y:top_clock_line_y + 75,  width:996, height: 6, image:"images/base_slide/base_green_path.png"})
@@ -38,6 +37,10 @@ s01_base_green_path.superLayer = bgLayer;
 s01_base_yellow_path.superLayer = bgLayer;
 s01_base_grey_path.superLayer = bgLayer;
 s01_base_red_path.superLayer = bgLayer;
+
+s01_top_counter_clock = new Layer ({x:0, y:100, width:1096, height: 42, image:"images/slide_01/s01_top_counter_clock.png"})
+s01_top_counter_clock.superLayer = bgLayer;
+
 
 s01_base_left_panel_purple_arrow = new Layer ({x:0, y:top_clock_line_y - 45, width:88, height: 45, image:"images/base_slide/base_left_panel_purple_arrow.png"})
 s01_base_left_panel_green_arrow = new Layer ({x:0, y:top_clock_line_y + 55, width:88, height: 45, image:"images/base_slide/base_left_panel_green_arrow.png"})
@@ -361,8 +364,9 @@ button1.style = textStyle
 bubble_5 = new Layer({x:700,y:-115,width:577, height:488, image:"images/slide_04/pindas_in_bakkie.png"})
 
 bubble_5.superLayer = bgLayer;
-bubble_5.placeBehind = s01_top_counter_clock;
-
+bubble_5.placeBehind(s01_top_counter_clock);
+bubble_5.placeBefore(s01_base_purple_path);
+bubble_5.placeBefore(s01_base_green_path);
 
 bubble_5.properties = {
   scale : 0.2
