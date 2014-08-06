@@ -1068,9 +1068,7 @@ chevron.states.animationOptions = {
     friction: 10
   }
 };
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 chevron.draggable.enabled = true;
 chevron.draggable.speedY = 0;
 chevron.on(Events.DragMove, function(){
@@ -1085,7 +1083,32 @@ chevron.on(Events.DragMove, function(){
 
 chevron.on(Events.DragEnd, function () {
   if (chevron.x < 1100) {
-      recipe_map.states.next();
+
+    if (currentScene===0) {
+        recipe_map.states.next();
+        console.log("CurrentScene 0 - Mapa Full");
+    } else if (currentScene===1){
+        recipe_map_01.states.next();
+        console.log("CurrentScene 1");
+    } else if (currentScene===2){
+        recipe_map_02.states.next();
+        console.log("CurrentScene 2");
+    } else if (currentScene===3){
+        recipe_map_03.states.next();
+        console.log("CurrentScene 3");
+    } else if (currentScene===4){
+        recipe_map_04.states.next();
+        console.log("CurrentScene 4");
+    } else if (currentScene===5){
+        recipe_map_05.states.next();
+        console.log("CurrentScene 5");
+    } else if (currentScene===6){
+        recipe_map_06.states.next();
+        console.log("CurrentScene 6");
+    } else if (currentScene===7){
+        recipe_map_07.states.next();
+        console.log("CurrentScene 7");
+    }
       chevron.animate({
         properties: {
           x: chevron_origin_x,
@@ -1102,40 +1125,123 @@ chevron.on(Events.DragEnd, function () {
       chevron2.opacity = 0
       chevron3.opacity = 0
   } else {
-    recipe_map.animate({
-      properties: {
-        x: 1030
+        if (currentScene===0) {
+          recipe_map.animate({ properties: { x: 1030 } });
+      } else if (currentScene===1){
+          recipe_map_01.animate({ properties: { x: 1030 } });
+      } else if (currentScene===2){
+          recipe_map_02.animate({ properties: { x: 1030 } });
+      } else if (currentScene===3){
+          recipe_map_03.animate({ properties: { x: 1030 } });
+      } else if (currentScene===4){
+          recipe_map_04.animate({ properties: { x: 1030 } });
+      } else if (currentScene===5){
+          recipe_map_05.animate({ properties: { x: 1030 } });
+      } else if (currentScene===6){
+          recipe_map_06.animate({ properties: { x: 1030 } });
+      } else if (currentScene===7){
+          recipe_map_07.animate({ properties: { x: 1030 } });
       }
-    });
-      chevron.animate({
-        properties: {
-          x: chevron_origin_x,
-          y: chevron_origin_y,
-        },
-        curve: "spring",
-        curveOptions: {
-          tension: 100,
-          friction: 10
-        }
+    
+    chevron.animate({
+      properties: {
+        x: chevron_origin_x,
+        y: chevron_origin_y,
+      },
+      curve: "spring",
+      curveOptions: {
+        tension: 100,
+        friction: 10
+      }
       });    
   }
 });
 
 recipe_map.on(Events.DragEnd, function () {
-  if (recipe_map.x > 50) {
+  console.log("CurrentScene 0 - recipe_map draggable");
+  if (recipe_map.x > 50) { 
     recipe_map.states.next();
-    Utils.delay(0.7, function(){
-      chevron.fadeIn();
-      chevron2.fadeIn();
-      chevron3.fadeIn();
-    })
-    Utils.delay(1.1, function(){
-      chevron.opacity = 1
-      chevron2.opacity = 0.7
-      chevron3.opacity = 0.4
-    })
   }
+  Utils.delay(0.7, function(){ chevron.fadeIn(); chevron2.fadeIn(); chevron3.fadeIn(); });
+  Utils.delay(1.1, function(){ chevron.opacity = 1, chevron2.opacity = 0.7, chevron3.opacity = 0.4 })
 });
+recipe_map_01.on(Events.DragEnd, function () {
+  console.log("CurrentScene 1 - recipe_map_01 draggable");
+  if (recipe_map_01.x > 50) { 
+    recipe_map_01.states.next(); 
+  }
+  Utils.delay(0.7, function(){ chevron.fadeIn(); chevron2.fadeIn(); chevron3.fadeIn(); });
+  Utils.delay(1.1, function(){ chevron.opacity = 1, chevron2.opacity = 0.7, chevron3.opacity = 0.4 })
+});
+recipe_map_02.on(Events.DragEnd, function () {
+  console.log("CurrentScene 2 - recipe_map_02 draggable");
+  if (recipe_map_02.x > 50) { 
+    recipe_map_02.states.next(); 
+  }
+  Utils.delay(0.7, function(){ chevron.fadeIn(); chevron2.fadeIn(); chevron3.fadeIn(); });
+  Utils.delay(1.1, function(){ chevron.opacity = 1, chevron2.opacity = 0.7, chevron3.opacity = 0.4 })
+});
+recipe_map_03.on(Events.DragEnd, function () {
+  console.log("CurrentScene 3 - recipe_map_03 draggable");
+  if (recipe_map_03.x > 50) { 
+    recipe_map_03.states.next(); 
+  }
+  Utils.delay(0.7, function(){ chevron.fadeIn(); chevron2.fadeIn(); chevron3.fadeIn(); });
+  Utils.delay(1.1, function(){ chevron.opacity = 1, chevron2.opacity = 0.7, chevron3.opacity = 0.4 })
+});
+recipe_map_04.on(Events.DragEnd, function () {
+  console.log("CurrentScene 4 - recipe_map_04 draggable");
+  if (recipe_map_04.x > 50) { 
+    recipe_map_04.states.next(); 
+  }
+  Utils.delay(0.7, function(){ chevron.fadeIn(); chevron2.fadeIn(); chevron3.fadeIn(); });
+  Utils.delay(1.1, function(){ chevron.opacity = 1, chevron2.opacity = 0.7, chevron3.opacity = 0.4 })
+});
+recipe_map_05.on(Events.DragEnd, function () {
+  console.log("CurrentScene 5 - recipe_map_05 draggable");
+  if (recipe_map_05.x > 50) { 
+    recipe_map_05.states.next(); 
+  }
+  Utils.delay(0.7, function(){ chevron.fadeIn(); chevron2.fadeIn(); chevron3.fadeIn(); });
+  Utils.delay(1.1, function(){ chevron.opacity = 1, chevron2.opacity = 0.7, chevron3.opacity = 0.4 })
+});
+recipe_map_06.on(Events.DragEnd, function () {
+  console.log("CurrentScene 6 - recipe_map_06 draggable");
+  if (recipe_map_06.x > 50) { 
+    recipe_map_06.states.next(); 
+  }
+  Utils.delay(0.7, function(){ chevron.fadeIn(); chevron2.fadeIn(); chevron3.fadeIn(); });
+  Utils.delay(1.1, function(){ chevron.opacity = 1, chevron2.opacity = 0.7, chevron3.opacity = 0.4 })
+});
+recipe_map_07.on(Events.DragEnd, function () {
+  console.log("CurrentScene 7 - recipe_map_07 draggable");
+  if (recipe_map_07.x > 50) { 
+    recipe_map_07.states.next(); 
+  }
+  Utils.delay(0.7, function(){ chevron.fadeIn(); chevron2.fadeIn(); chevron3.fadeIn(); });
+  Utils.delay(1.1, function(){ chevron.opacity = 1, chevron2.opacity = 0.7, chevron3.opacity = 0.4 })
+});
+recipe_map_08.on(Events.DragEnd, function () {
+  console.log("CurrentScene 8 - recipe_map_08 draggable");
+  if (recipe_map_08.x > 50) { 
+    recipe_map_08.states.next(); 
+  }
+  Utils.delay(0.7, function(){ chevron.fadeIn(); chevron2.fadeIn(); chevron3.fadeIn(); });
+  Utils.delay(1.1, function(){ chevron.opacity = 1, chevron2.opacity = 0.7, chevron3.opacity = 0.4 })
+});
+recipe_map_09.on(Events.DragEnd, function () {
+  console.log("CurrentScene 9 - recipe_map_09 draggable");
+  if (recipe_map_09.x > 50) { 
+    recipe_map_09.states.next(); 
+  }
+  Utils.delay(0.7, function(){ chevron.fadeIn(); chevron2.fadeIn(); chevron3.fadeIn(); });
+  Utils.delay(1.1, function(){ chevron.opacity = 1, chevron2.opacity = 0.7, chevron3.opacity = 0.4 })
+});
+        
+
+
+
+
 
 // chevron.on(Events.Click, function() {
   
